@@ -4,7 +4,7 @@ As the engine is developed, this will be filled out. But for now, this is blank.
 
 # Archipelago Randomizer Configuration / Setup Guide
 
-Archipelago is a Multiworld Randomizer, meaning it randomizes a bunch of games into one randomizer pool, and it challenges you to conplete all of the games.
+Archipelago is a Multiworld Randomizer, meaning it randomizes a bunch of games into one randomizer pool, and it challenges you to complete all of the games.
 
 ## How to set up Archipelago with this Engine
 1. Download the latest Engine Build.
@@ -17,7 +17,15 @@ Archipelago is a Multiworld Randomizer, meaning it randomizes a bunch of games i
 8. Have fun!
 
 ### NOTICE:
-Certain settings may not yet be implemented, and will be ignored by the APWorld until they are.
+Specific settings may not yet be implemented and will be ignored by the APWorld until they are implemented.
+These settings are:
+* Unlock Type: Per Week
+* Unlock Method: Note Checks, Both
+* Ticket Percent & Ticket Win Percent
+* Grade Requirement & Accuracy Requirement
+* All of the traps
+
+These will slowly be added as the AP is developed.
 
 When updating the Engine, make sure to use the Update/Install APWorld Button to ensure that the latest APWorld is being used.
 
