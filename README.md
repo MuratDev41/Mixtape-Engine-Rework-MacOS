@@ -20,10 +20,6 @@ Archipelago is a Multiworld Randomizer, meaning it randomizes a bunch of games i
 Specific settings may not yet be implemented and will be ignored by the APWorld until they are implemented.
 These settings are:
 * Unlock Type: Per Week
-* Unlock Method: Note Checks, Both
-* Ticket Percent & Ticket Win Percent
-* Grade Requirement & Accuracy Requirement
-* All of the traps
 
 These will slowly be added as the AP is developed.
 
