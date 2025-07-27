@@ -35,7 +35,7 @@ When updating the Engine, make sure to use the Update/Install APWorld Button to 
 ### TRAPS:
 * Blue Balls Curse: If you get this bad boy, it's lights out for you! Even in freeplay, you can't escape the wrath of the Blue Balls Curse.
 * Fake Transition: Fakes a transition to another menu, but it won't actually kick you out of the song...unlike certain *other* traps...
-* SvC Effect: A random Streamer Vs. Chat effect. Just hope you don't get unlucky... (see Wiki for details)
+* SvC Effect: A random Streamer Vs. Chat effect. Just hope you don't get unlucky... ([see Wiki for details](https://github.com/Z11Coding/Mixtape-Engine-Rework/wiki/List-of-SvC-Effects))
 * Ghost Chat: May the chat have mercy on your soul... (SvC Effect, but every 5-10 seconds)
 * Tutorial Trap: The most evil thing we've ever created. Will *take you out of your song, and force you to play Tutorial. No, I'm not kidding.* Don't worry, it'll put you right back to where you were when the song is done.
 * Chart Modifier Trap: Forces you to play a song with a chosen Chart Modifier (Persists if you try to exit the song before beating it!)
