@@ -26,7 +26,7 @@ When updating the Engine, make sure to use the Update/Install APWorld Button to 
 
 # LIST OF ITEMS AND TRAPS (so far)
 ### ITEMS:
-* All of your songs: You can set the amount of songs that get added in the Song Limit setting (coming soon, as of right now, it just grabs them all)
+* All of your songs: You can set the amount of songs that get added in the Song Limit setting
 * Ticket: The most important of all, because you can't get into your final concert without em! Collect them all to access your final song (that is, if you can find it...)
 * Shield: The direct counter to Blue Balls Curse, this'll protect yo balls so that you don't instantly die. Keep in mind, though, there *can* be less shields if you set it that way, so be careful!
 * Max HP Up: These can help you out if you have a few songs that'll drain your health like nobody's business (or have to deal with traps that will most likely kill you otherwise). True to its name, it raises your Max HP. That's it.
