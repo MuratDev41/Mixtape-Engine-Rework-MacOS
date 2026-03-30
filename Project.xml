@@ -127,12 +127,12 @@
 
 	<haxelib name="lime" /> <!-- Game engine backend -->
 	<haxelib name="openfl" /> <!-- Game engine backend -->
-	<haxelib name="flixel" version="5.6.1"/> <!-- Game engine -->
+	<haxelib name="flixel" version="5.6.2"/> <!-- Game engine -->
 	<haxelib name="haxeui-core" /> <!-- UI framework -->
 	<haxelib name="haxeui-flixel" /> <!-- Integrate HaxeUI with Flixel -->
 	<haxelib name="flixel-text-input" /> <!-- Improved text field rendering for HaxeUI -->
 	<haxelib name="flixel-ui" />
-	<haxelib name="flixel-addons" version="3.2.2"/>
+	<haxelib name="flixel-addons" version="3.3.2"/>
 	<haxelib name="tjson" version="1.4.0"/>
 
 	<!--Base Game Stuff-->
@@ -194,6 +194,9 @@
 
 	<!--Allow working memory greater than 1 Gig-->
 	<haxedef name="HXCPP_GC_BIG_BLOCKS"/>
+
+	<!-- Force C11/C99 standard for macOS/iOS to fix zlib compilation with modern Xcode -->
+	<haxedef name="HXCPP_CFLAGS" value="-std=c99 -DZ_HAVE_UNISTD_H -D_DARWIN_C_SOURCE -Wno-error=deprecated-non-prototype -Wno-deprecated-declarations -Wno-unused-command-line-argument -Wno-macro-redefined" if="macos || ios" />
 
 	<!-- Enables a terminal log prompt on debug builds -->
 	<haxelib name="hxcpp-debug-server" if="debug"/>

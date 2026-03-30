@@ -28,7 +28,7 @@ using StringTools;
 
 class StickerSubState extends MusicBeatSubstate
 {
-  public static var grpStickers:FlxTypedGroup<StickerSprite>;
+  public var grpStickers:FlxTypedGroup<StickerSprite>;
 
   // yes... a damn OpenFL sprite!!!
   public var dipshit:Sprite;
@@ -146,7 +146,7 @@ class StickerSubState extends MusicBeatSubstate
         if (!ClientPrefs.data.audioBreak) FlxG.sound.play(Paths.sound(daSound));
         else FlxG.sound.play(Paths.sound(funny[FlxG.random.int(0,1)]));
 
-        if (grpStickers == null || ind == grpStickers.members.length - 1)
+        if (grpStickers == null || grpStickers.members == null || ind == grpStickers.members.length - 1)
         {
           MusicBeatState.emptyStickers = null;
           switchingState = false;
@@ -248,7 +248,7 @@ class StickerSubState extends MusicBeatSubstate
         if (ind == grpStickers.members.length - 1) frameTimer = 2;
 
         new FlxTimer().start((1 / 24) * frameTimer, _ -> {
-          if (sticker == null) return;
+          if (sticker == null || grpStickers == null || grpStickers.members == null) return;
 
           sticker.scale.x = sticker.scale.y = FlxG.random.float(0.97, 1.02);
 
@@ -287,6 +287,7 @@ class StickerSubState extends MusicBeatSubstate
 
   override public function update(elapsed:Float):Void
   {
+    if (members == null) return;
     super.update(elapsed);
 
     // if (FlxG.keys.justPressed.ANY)
@@ -306,6 +307,7 @@ class StickerSubState extends MusicBeatSubstate
   override public function destroy():Void
   {
     if (switchingState) return;
+    if (MusicBeatState.emptyStickers == this) MusicBeatState.emptyStickers = null;
     super.destroy();
   }
 }

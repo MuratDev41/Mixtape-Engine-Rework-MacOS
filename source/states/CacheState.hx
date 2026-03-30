@@ -547,7 +547,6 @@ class CacheState extends MusicBeatState
 		#end
 		#else
 		FlxG.log.warn('Platform not supported!');
-		startAndEnd();
 		#end
 		return null;
 	}

@@ -1,6 +1,6 @@
-#if windows
 package backend.window;
 
+#if windows
 // most codes stolen from vs dave and bambi source code.
 /*
     VS DAVE WINDOWS/LINUX/MACOS UTIL

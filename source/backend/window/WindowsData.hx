@@ -87,6 +87,7 @@ class WindowsData
 		ShowWindow(taskbar, SW_HIDE);
 		return static_cast<int>(taskbarVisible);
 	')
+	#end
 	private static function _hideTaskbar():Int
 	{
 		return 0;
@@ -96,9 +97,12 @@ class WindowsData
 
 	public static function hideTaskbar()
 	{
+		#if windows
 		taskbarWasVisible = _hideTaskbar();
+		#end
 	}
 
+	#if windows
 	@:functionCode('
 		if (!static_cast<bool>(wasVisible)) {
 			return;
@@ -110,16 +114,20 @@ class WindowsData
 		}
 		ShowWindow(taskbar, SW_SHOWNOACTIVATE);
 	')
+	#end
 	private static function _restoreTaskbar(wasVisible:Int) {}
 
 	public static function restoreTaskbar()
 	{
+		#if windows
 		_restoreTaskbar(taskbarWasVisible);
+		#end
 	}
 
 	// from atpx8: ughhhhhhhhhhhhhhhhhhhhhhhhh this is gonna suck to code isnt it
 	// from future atpx8: it did in fact kinda suck to code
 
+	#if windows
 	@:functionCode('
 		std::vector<std::string> winNames = {};
 		winNames.emplace_back(std::string(windowTitle.c_str()));
@@ -132,6 +140,7 @@ class WindowsData
 		hxNames->Item(winNames.size() - 1) = String(winNames[0].c_str());
 		return hxNames;
 	')
+	#end
 	private static function _hideWindows(windowTitle:String):Array<String>
 	{
 		return [];
@@ -141,9 +150,12 @@ class WindowsData
 
 	public static function hideWindows()
 	{
+		#if windows
 		wereHidden = _hideWindows(openfl.Lib.application.window.title);
+		#end
 	}
 
+	#if windows
 	@:functionCode('
 		for (int i = 0; i < sizeHidden; i++) {
 			HWND hwnd = FindWindowA(NULL, prevHidden->Item(i).c_str());
@@ -152,13 +164,17 @@ class WindowsData
 			}
 		}
 	')
+	#end
 	private static function _restoreWindows(prevHidden:Array<String>, sizeHidden:Int) {}
 
 	public static function restoreWindows()
 	{
+		#if windows
 		_restoreWindows(wereHidden, wereHidden.length);
+		#end
 	}
 
+	#if windows
 	@:functionCode('
         int darkMode = mode;
         HWND window = GetActiveWindow();
@@ -167,11 +183,13 @@ class WindowsData
         }
         UpdateWindow(window);
     ')
+	#end
 	@:noCompletion
 	public static function _setWindowColorMode(mode:Int) {}
 
 	public static function setWindowColorMode(mode:WindowColorMode)
 	{
+		#if windows
 		var darkMode:Int = cast(mode, Int);
 
 		if (darkMode > 1 || darkMode < 0)
@@ -182,8 +200,10 @@ class WindowsData
 		}
 
 		_setWindowColorMode(darkMode);
+		#end
 	}
 
+	#if windows
 	@:functionCode('
 	HWND window = GetActiveWindow();
 	// Remove the WS_SYSMENU style
@@ -192,15 +212,19 @@ class WindowsData
     // Force the window to redraw
     SetWindowPos(window, NULL, 0, 0, 0, 0, SWP_FRAMECHANGED | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_NOOWNERZORDER);
 	')
+	#end
 	public static function removeWindowIcon() {}
 
+	#if windows
 	@:functionCode('
 	HWND window = GetActiveWindow();
 	SetWindowLong(window, GWL_EXSTYLE, GetWindowLong(window, GWL_EXSTYLE) ^ WS_EX_LAYERED);
 	')
+	#end
 	@:noCompletion
 	public static function _setWindowLayered() {}
 
+	#if windows
 	@:functionCode('
         HWND window = GetActiveWindow();
 
@@ -216,6 +240,7 @@ class WindowsData
        	SetLayeredWindowAttributes(window, 0, (255 * (a * 100)) / 100, LWA_ALPHA);
 
     ')
+	#end
 	/**
 	 * Set Whole Window's Opacity
 	 * ! MAKE SURE TO CALL CppAPI._setWindowLayered(); BEFORE RUNNING THIS
@@ -226,6 +251,7 @@ class WindowsData
 		return alpha;
 	}
 
+	#if windows
 	@:functionCode('
         HWND window = GetActiveWindow();
         BYTE alpha;
@@ -237,6 +263,7 @@ class WindowsData
             return -1.0f; // Indicate an error
         }
     ')
+	#end
 	/**
 	 * Get Whole Window's Opacity
 	 * @return 
@@ -246,9 +273,11 @@ class WindowsData
 		return 0;
 	}
 
+	#if windows
 	@:functionCode('SetProcessDPIAware();')
-	public static function registerHighDpi() {}
 	#end
+	public static function registerHighDpi() {}
+
 }
 
 @:enum abstract WindowColorMode(Int)

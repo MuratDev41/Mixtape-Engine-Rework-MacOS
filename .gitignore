@@ -5,8 +5,18 @@ art/build_x32-officialrelease.bat
 art/build_x64-officialrelease.bat
 art/test_x64-debug-officialrelease.bat
 
+### macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Trashes
+.fseventsd
+.Spotlight-V100
+
 ### VS Code
-export/*
+export/
 .vscode/*
 *.code-workspace
 # Local history which shouldn't be shared.

@@ -1,5 +1,6 @@
 package backend.window;
 
+#if windows
 @:native("HWND__") extern class HWNDStruct {}
 typedef HWND = cpp.Pointer<HWNDStruct>;
 typedef BOOL = Int;
@@ -84,6 +85,13 @@ class Transparency
 			if (setWindowLong(win, -16, winStyle) == 0) {
 				trace("Error restoring window borders!");
 				trace("Code: " + Std.string(getLastError()));
-		}*/
+			}*/
 	}
 }
+#else
+class Transparency
+{
+	public static function setTransparency(winName:String, color:Int):Void {}
+	public static function reset():Void {}
+}
+#end

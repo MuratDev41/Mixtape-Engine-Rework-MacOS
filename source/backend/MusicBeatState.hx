@@ -39,7 +39,7 @@ class MusicBeatState extends FlxState
 		}
 		FlxTransitionableState.skipNextTransOut = false;
 		timePassedOnState = 0;
-		if (reopen)
+		if (reopen && emptyStickers != null && emptyStickers.exists && @:privateAccess emptyStickers.members != null)
 		{
 			reopen = false;
 			openSubState(emptyStickers);
